@@ -2,19 +2,32 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>МайнЛаб</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Пэйл</title>
 
 <style>
-/* ===== БАЗА ===== */
+
+html { scroll-behavior: smooth; }
+
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif}
 html,body{height:100%}
 body{
   color:#fff;
-  background:#000; /* чёрный фон, как просил */
+  background:#000;
   overflow-x:hidden;
 }
 
-/* ===== SVG ВОЛНЫ (взяты из старого кода) ===== */
+#telegram, #youtube {
+
+  scroll-margin-top: 40vh;
+
+  display: inline-block;
+}
+
+@media (max-width:900px) {
+  #telegram, #youtube { scroll-margin-top: 30vh; }
+}
+
 .waves{
   position:fixed;
   inset:0;
@@ -24,9 +37,7 @@ body{
 }
 .waves svg{display:block;width:100%;height:100vh;}
 .wave-layer{transform-origin:center center;}
-/* убираем анимации для лёгкости — волны статичные */
 
-/* ===== HERO ===== */
 .hero{
   min-height:100vh;
   display:flex;
@@ -45,9 +56,8 @@ body{
   gap:60px;
 }
 
-/* ===== АВАТАРКА С ЖЁЛТЫМ СВЕТОМ ===== */
 .logo{
-  width:340px;
+  width:px;
   position:relative;
   display:flex;
   justify-content:center;
@@ -61,8 +71,8 @@ body{
   height:450px;
   border-radius:50%;
   background:radial-gradient(circle,
-    rgba(255,170,60,0.45) 0%,
-    rgba(255,150,40,0.25) 35%,
+    rgba(110, 110, 110, 0.938) 0%,
+    rgba(253, 253, 253, 0.25) 35%,
     rgba(0,0,0,0) 70%
   );
   filter:blur(40px);
@@ -81,7 +91,6 @@ body{
   mask-image: radial-gradient(circle, black 65%, transparent 100%);
 }
 
-/* ===== ТЕКСТ ===== */
 .content{max-width:520px;}
 .content h1{font-size:80px;margin-bottom:20px;}
 .content p{color:#ccc;margin-bottom:30px;line-height:1.5;}
@@ -95,7 +104,6 @@ body{
   font-weight:600;
 }
 
-/* ===== ABOUT ===== */
 .about{padding:120px 0;}
 .about-wrap{
   max-width:1500px;
@@ -126,7 +134,6 @@ body{
   border-radius:18px;
 }
 
-/* ===== MEMBERS ===== */
 .members{padding:120px 60px;text-align:center;}
 .members h2{font-size:36px;margin-bottom:60px;}
 
@@ -175,7 +182,6 @@ body{
 }
 .member.show{opacity:1;transform:translateY(0);}
 
-/* ===== SCROLL TOP ===== */
 #scrollTop{
   position:fixed;
   right:25px;
@@ -194,7 +200,6 @@ body{
 }
 #scrollTop.show{opacity:1;pointer-events:auto;}
 
-/* ===== ADAPTIVE ===== */
 @media(max-width:900px){
   .container,.about-wrap{flex-direction:column;text-align:center;}
   .about-text,.about-image{width:100%;}
@@ -206,7 +211,6 @@ body{
 
 <body>
 
-<!-- ===== SVG ВОЛНЫ (старый фон, но статичный) ===== -->
 <div class="waves" aria-hidden="true">
   <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img" aria-hidden="true">
     <defs>
@@ -236,42 +240,45 @@ body{
   </svg>
 </div>
 
-<!-- ===== HERO ===== -->
 <section class="hero">
   <div class="container">
     <div class="logo">
+
       <img src="logo.png" alt="Логотип">
     </div>
     <div class="content">
-      <h1>Сайт йоу</h1>
-      <p>Мы — коллектив творческих ребят, которые занимаются созданием видеороликов и стримингом.</p>
+      <h1>Пэйл</h1>
+      <p>Мы — группа творческих ребят, которые увлекаются созданием годного контента и проведением стримов. которые совместными усилиями стараются развить проект.</p>
       <div class="buttons">
-        <a href="#">Мы в соцсетях</a>
-        <a href="#">Наши видео</a>
+
+        <a href="#telegram">Мы в соцсетях</a>
+        <a href="#youtube">Наши видео</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section class="about">
+<section class="about" id="socials">
   <div class="about-wrap">
     <div class="about-text">
       <h2>О нас</h2>
-      <p>Мы были участниками 4 сезона МайнШилд Академии и создали собственный проект — КОР.</p>
-      <p>Проект сохраняет дух сообщества и развивает новые идеи.</p>
+      <p>Ещё в далёком 2023 году один из нас нашёл приватный сервер, который стал для него особенным местом. Там царили веселье, взаимопонимание и поддержка. Именно там человек под ником Вольфор обрёл новых друзей — Мофага и Вирома. После закрытия сервера в 2024 году они продолжали играть вместе и делиться впечатлениями, но со временем их пути разошлись.</p>
+      <p>И вот в 2025 году они решили воссоединиться, создав собственный приватный сервер для контент-мейкеров под названием «Пэйл». На данный момент «Пэйл» — это место, где мы воплощаем в жизнь наши детские мечты, находим новые знакомства и получаем уникальный опыт.</p>
+
       <div class="about-buttons">
-        <a href="https://t.me/MineLab_original" target="_blank">Телеграм</a>
-        <a href="#">YouTube</a>
+
+        <a id="telegram" href="https://t.me/PALE_KM" target="_blank" rel="noopener">Телеграм</a>
+        <a id="youtube" href="https://youtube.com/@PALE_KM" target="_blank" rel="noopener">Ютуб</a>
       </div>
     </div>
+
     <div class="about-image">
+
       <img src="about.jpg" alt="О нас">
     </div>
   </div>
 </section>
 
-<!-- ===== MEMBERS ===== -->
 <section class="members">
   <h2>Участники коллектива</h2>
   <div class="members-grid">
@@ -279,11 +286,11 @@ body{
     <div class="member">
       <img src="members/member1.png" alt="Вик">
       <div class="member-overlay">
-        <h3>Вик</h3>
+        <h3>Вольфор</h3>
         <p>Владелец · Тех. админ</p>
         <div class="member-links">
-          <a href="https://twitch.tv/weak_ezz/" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@weak_ezz" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/weak_ezz/" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/@weak_ezz" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -292,10 +299,10 @@ body{
       <img src="members/member2.png" alt="Мофаг">
       <div class="member-overlay">
         <h3>Мофаг</h3>
-        <p>Художник · Тех. спец</p>
+        <p>Контент · Художник</p>
         <div class="member-links">
-          <a href="https://tiktok.com/mofagh" target="_blank">TikTok</a>
-          <a href="https://youtube.com/@Mofaghs" target="_blank">YouTube</a>
+          <a href="https://tiktok.com/mofagh" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://youtube.com/@Mofaghs" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -306,8 +313,8 @@ body{
         <h3>Фаултдура</h3>
         <p>Контент · Стример</p>
         <div class="member-links">
-          <a href="https://twitch.tv/maekawaxdxd" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@faultdyra2615" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/maekawaxdxd" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/@faultdyra2615" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -318,8 +325,8 @@ body{
         <h3>Очкарун</h3>
         <p>Контент · Стример</p>
         <div class="member-links">
-          <a href="https://twitch.tv/ochkarun_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/ochkarun_channel" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/ochkarun_channel" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/ochkarun_channel" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -330,56 +337,44 @@ body{
         <h3>Стелсик</h3>
         <p>Контент · Стример</p>
         <div class="member-links">
-          <a href="https://twitch.tv/stelsik_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/stelsik_channel" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/stelsik_channel" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/stelsik_channel" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
 
     <div class="member">
-      <img src="members/member6.png" alt="Ося">
+      <img src="members/member6.png" alt="Виром">
       <div class="member-overlay">
-        <h3>Ося</h3>
-        <p>Художница</p>
+        <h3>Виром</h3>
+        <p>Контент-Мейкер</p>
         <div class="member-links">
-          <a href="https://twitch.tv/osiasha" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@osiashawhat" target="_blank">YouTube</a>
+          <a href="https://web.telegram.org/k/#@VIRom12" target="_blank">Telegram</a>
+          <a href="https://youtube.com/@virom0999" target="_blank">YouTube</a>
         </div>
       </div>
     </div>
 
     <div class="member">
-      <img src="members/member7.png" alt="Форфи">
+      <img src="members/member7.png" alt="Крекер">
       <div class="member-overlay">
-        <h3>Форфи</h3>
-        <p>Контент · Стример</p>
+        <h3>Крекер</h3>
+        <p>Вип Гость · Контент</p>
         <div class="member-links">
-          <a href="https://twitch.tv/forfi_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/forfi_channel" target="_blank">YouTube</a>
+          <a href="https://t.me/podval_krekera07" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/@krekerplay07" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
 
     <div class="member">
-      <img src="members/member8.png" alt="Никита">
+      <img src="members/member8.png" alt="Туфф">
       <div class="member-overlay">
-        <h3>Никита</h3>
-        <p>Контент · Стример</p>
+        <h3>Тайный гость</h3>
+        <p>Легенда</p>
         <div class="member-links">
-          <a href="https://twitch.tv/nikita_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/nikita_channel" target="_blank">YouTube</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="members/member9.png" alt="Люмбик">
-      <div class="member-overlay">
-        <h3>Люмбик</h3>
-        <p>Контент · Стример</p>
-        <div class="member-links">
-          <a href="https://twitch.tv/LMBL4IK" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@LUMBL4IKK" target="_blank">YouTube</a>
+          <a href="https://tiktok.com/" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://youtube.com/" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -388,10 +383,10 @@ body{
       <img src="members/member10.png" alt="Квабур">
       <div class="member-overlay">
         <h3>Квабур</h3>
-        <p>Спектерб · Админ</p>
+        <p>Контент · Стример</p>
         <div class="member-links">
-          <a href="https://twitch.tv/kwabur" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@DikiyOpezdol" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/kwabur" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/@DikiyOpezdol" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -402,32 +397,8 @@ body{
         <h3>Рэй</h3>
         <p>Художник</p>
         <div class="member-links">
-          <a href="https://twitch.tv/rey_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@RayAurum-w8k" target="_blank">YouTube</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="members/member12.png" alt="Ахао">
-      <div class="member-overlay">
-        <h3>Ахао</h3>
-        <p>Контент · Стример</p>
-        <div class="member-links">
-          <a href="https://twitch.tv/ahao_1432" target="_blank">Twitch</a>
-          <a href="https://youtube.com/@AHAO1432" target="_blank">YouTube</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="member">
-      <img src="members/member13.png" alt="Антифеникс">
-      <div class="member-overlay">
-        <h3>Антифеникс</h3>
-        <p>Контент · Стример</p>
-        <div class="member-links">
-          <a href="https://twitch.tv/shadow_channel" target="_blank">Twitch</a>
-          <a href="https://youtube.com/shadow_channel" target="_blank">YouTube</a>
+          <a href="https://twitch.tv/rey_channel" target="_blank" rel="noopener">Twitch</a>
+          <a href="https://youtube.com/@RayAurum-w8k" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -438,8 +409,8 @@ body{
         <h3>Диномин</h3>
         <p>Контент · Рендер</p>
         <div class="member-links">
-          <a href="https://tiktok.com/@d1nomin" target="_blank">TikTok</a>
-          <a href="https://youtube.com/Dinomchi" target="_blank">YouTube</a>
+          <a href="https://tiktok.com/@d1nomin" target="_blank" rel="noopener">TikTok</a>
+          <a href="https://youtube.com/Dinomchi" target="_blank" rel="noopener">YouTube</a>
         </div>
       </div>
     </div>
@@ -447,22 +418,21 @@ body{
   </div>
 </section>
 
-<button id="scrollTop">↑</button>
+<button id="scrollTop" aria-label="Наверх">↑</button>
 
 <script>
-/* появление карточек при скролле */
-const cards=document.querySelectorAll('.member');
-const obs=new IntersectionObserver(entries=>{
+
+const cards = document.querySelectorAll('.member');
+const obs = new IntersectionObserver(entries=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting) entry.target.classList.add('show');
   });
 },{threshold:0.2});
 cards.forEach(c=>obs.observe(c));
 
-/* кнопка вверх */
-const btn=document.getElementById('scrollTop');
-window.addEventListener('scroll',()=>{ btn.classList.toggle('show',window.scrollY>400); });
-btn.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+const btn = document.getElementById('scrollTop');
+window.addEventListener('scroll', ()=>{ btn.classList.toggle('show', window.scrollY > 400); });
+btn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
 </script>
 
 </body>
