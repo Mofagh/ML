@@ -16,7 +16,7 @@ body{
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="white" opacity="0.9"/><circle cx="12" cy="12" r="3" fill="black"/></svg>') 12 12, auto;
 }
 
-a, button, .member, .video-card, input, textarea {
+a, button, .member, .video-card, input, textarea, iframe {
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 28 28"><circle cx="14" cy="14" r="10" fill="white" opacity="0.95"/><circle cx="14" cy="14" r="4" fill="black"/></svg>') 14 14, pointer;
 }
 
@@ -88,7 +88,21 @@ a, button, .member, .video-card, input, textarea {
 .about-buttons a{ background:#fff; color:#000; padding:12px 22px; border-radius:20px; text-decoration:none; transition: all 0.3s; }
 .about-buttons a:hover{ transform: translateY(-2px); box-shadow: 0 8px 20px rgba(255,255,255,0.3); }
 .about-image{width:50%;position:relative;}
-.about-image::after{ content:""; position:absolute; inset:0; background:rgba(0,0,0,0.20); border-radius:18px; pointer-events:none; z-index:0; }
+
+.youtube-player {
+  position: relative;
+  width: 100%;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+}
+
+.youtube-player iframe {
+  width: 100%;
+  height: 400px;
+  display: block;
+  border: none;
+}
 
 .members{padding:120px 60px;text-align:center; position: relative; z-index: 1;}
 .members::before {
@@ -173,7 +187,6 @@ a, button, .member, .video-card, input, textarea {
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.1);
   transition: all 0.3s;
-  cursor: pointer;
 }
 .video-card:hover{
   transform: translateY(-10px);
@@ -278,7 +291,6 @@ a, button, .member, .video-card, input, textarea {
   border-radius: 12px;
   font-size: 15px;
   font-weight: 700;
-  cursor: pointer;
   transition: all 0.3s;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -329,31 +341,20 @@ a, button, .member, .video-card, input, textarea {
   font-size: 13px;
 }
 
-#scrollTop{ position:fixed; right:25px; bottom:25px; width:45px; height:45px; border-radius:50%; border:none; background:#fff; color:#000; font-size:20px; cursor: pointer; opacity:0; pointer-events:none; transition:0.3s; z-index:50; }
+#scrollTop{ position:fixed; right:25px; bottom:25px; width:45px; height:45px; border-radius:50%; border:none; background:#fff; color:#000; font-size:20px; opacity:0; pointer-events:none; transition:0.3s; z-index:50; }
 #scrollTop.show{opacity:1;pointer-events:auto;}
-
-.custom-player{ position:relative; width:100%; height:auto; max-width:100%; border-radius:18px; overflow:hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.6); background:#000; display:block; z-index:3; }
-.custom-player__video{ display:block; width:100%; height:auto; object-fit:cover; z-index:4; background:#000; filter:brightness(1.06) contrast(1.03); }
-.custom-player__controls{ position:absolute; left:0; right:0; bottom:0; padding:12px; z-index:5; backdrop-filter: blur(4px); background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%); box-sizing:border-box; }
-.progress-container{ position:relative; width:100%; height:6px; background:rgba(255,255,255,0.08); border-radius:6px; overflow:hidden; cursor: pointer; margin-bottom:10px; }
-.progress-bar{ width:0%; height:100%; background:linear-gradient(90deg, #ddd, #fff); transition:width 0.1s linear; }
-.controls-row{ display:flex; align-items:center; gap:10px; justify-content:flex-start; }
-.player-btn{ background:rgba(255, 255, 255, 0.95); color:#000; border:none; padding:8px 12px; border-radius:8px; cursor: pointer; font-weight:700; font-size:16px; }
-.volume-container{ display:flex; align-items:center; gap:8px; }
-.volume-slider{ width:120px; }
 
 @media(max-width:900px){
   .container,.about-wrap{flex-direction:column;text-align:center;}
   .about-text,.about-image{width:100%;}
   .content h1{font-size:60px;}
   .buttons,.about-buttons{justify-content:center;}
-  .volume-slider{width:80px;}
-  .controls-row{justify-content:center;gap:8px}
   .logo{ width:240px; height:240px; }
   .logo img{ width:180px; height:180px; }
   .latest-videos, .members{padding:80px 30px;}
   .footer-section{padding:40px 20px 20px;}
   .footer-form{max-width:100%;}
+  .youtube-player iframe{height:250px;}
 }
 </style>
 </head>
@@ -382,27 +383,13 @@ a, button, .member, .video-card, input, textarea {
     </div>
 
     <div class="about-image">
-      <div class="custom-player">
-        <video class="custom-player__video" poster="img/video-preview.jpg" preload="metadata" playsinline crossorigin="anonymous">
-          <source src="video/pale_trailer.mp4" type="video/mp4">
-          Ваш браузер не поддерживает видео тег.
-        </video>
-        <div class="custom-player__controls">
-          <div class="progress-container">
-            <div class="progress-bar"></div>
-          </div>
-
-          <div class="controls-row">
-            <button class="player-btn play-pause">▶</button>
-
-            <div class="volume-container">
-              <button class="player-btn volume-btn">🔊</button>
-              <input type="range" class="volume-slider" min="0" max="10" step="0.1" value="5">
-            </div>
-
-            <button class="player-btn fullscreen-btn">⤢</button>
-          </div>
-        </div>
+      <div class="youtube-player">
+        <iframe 
+          src="https://www.youtube.com/embed/r4FxDSFMBHI" 
+          title="Pale Trailer" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          allowfullscreen>
+        </iframe>
       </div>
     </div>
 
@@ -418,8 +405,8 @@ a, button, .member, .video-card, input, textarea {
         <h3>Вольфор</h3>
         <p>Владелец · Тех. админ</p>
         <div class="member-links">
-          <a href="https://twitch.tv/weak_ezz/" target="_blank" rel="noopener">Твич</a>
-          <a href="https://youtube.com/@weak_ezz" target="_blank" rel="noopener">Ютуб</a>
+          <a href="https://t.me/justwolforhek" target="_blank" rel="noopener">ТГК</a>
+          <a href="https://www.youtube.com/@Justin_Wolfor" target="_blank" rel="noopener">Ютуб</a>
         </div>
       </div>
     </div>
@@ -735,8 +722,6 @@ loadVideos();
 const contactForm = document.getElementById('contact-form');
 const formMessage = document.getElementById('form-message');
 
-const YOUR_EMAIL = 'mofaghlol2@gmail.com';
-
 contactForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   
@@ -746,13 +731,6 @@ contactForm.addEventListener('submit', async (e) => {
   
   submitBtn.disabled = true;
   submitBtn.textContent = 'Отправка...';
-  
-  const emailBody = `
-От кого: ${name}
-
-Сообщение:
-${message}
-  `.trim();
   
   try {
     const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
@@ -766,8 +744,7 @@ ${message}
         user_id: 'UobEhyjGZUZzEKDdq',
         template_params: {
           from_name: name,
-          message: message,
-          to_email: YOUR_EMAIL 
+          message: message
         }
       })
     });
@@ -803,198 +780,6 @@ cards.forEach(c=>obs.observe(c));
 const btn = document.getElementById('scrollTop');
 window.addEventListener('scroll', ()=>{ btn.classList.toggle('show', window.scrollY > 400); });
 btn.onclick = ()=> window.scrollTo({top:0,behavior:'smooth'});
-
-(function(){
-  const players = document.querySelectorAll('.custom-player');
-
-  players.forEach(player => {
-    const video = player.querySelector('.custom-player__video');
-    const playBtn = player.querySelector('.play-pause');
-    const progressContainer = player.querySelector('.progress-container');
-    const progressBar = player.querySelector('.progress-bar');
-    const volumeBtn = player.querySelector('.volume-btn');
-    const volumeSlider = player.querySelector('.volume-slider');
-    const fullscreenBtn = player.querySelector('.fullscreen-btn');
-
-    let audioCtx = null;
-    let gainNode = null;
-    let compressor = null;
-    let mediaSource = null;
-    let lastNonZeroVolume = parseFloat(volumeSlider.value) || 5;
-    const MAX_GAIN = 3.5;
-
-    function setupAudio() {
-      if (audioCtx) return true;
-      try {
-        const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
-        if (!AudioContextCtor) return false;
-        audioCtx = new AudioContextCtor();
-        try {
-          mediaSource = audioCtx.createMediaElementSource(video);
-        } catch (err) {
-          audioCtx = null;
-          mediaSource = null;
-          return false;
-        }
-        gainNode = audioCtx.createGain();
-        compressor = audioCtx.createDynamicsCompressor();
-        compressor.threshold.setValueAtTime(-8, audioCtx.currentTime);
-        compressor.knee.setValueAtTime(20, audioCtx.currentTime);
-        compressor.ratio.setValueAtTime(6, audioCtx.currentTime);
-        compressor.attack.setValueAtTime(0.003, audioCtx.currentTime);
-        compressor.release.setValueAtTime(0.25, audioCtx.currentTime);
-        mediaSource.connect(gainNode);
-        gainNode.connect(compressor);
-        compressor.connect(audioCtx.destination);
-        gainNode.gain.value = mapSliderToGain(parseFloat(volumeSlider.value) || 5);
-        return true;
-      } catch (err) {
-        audioCtx = null;
-        gainNode = null;
-        compressor = null;
-        mediaSource = null;
-        return false;
-      }
-    }
-
-    function resumeAudioContextIfNeeded() {
-      if (audioCtx && audioCtx.state === 'suspended') {
-        audioCtx.resume().catch(()=>{});
-      }
-    }
-
-    function unlockAudioOnFirstGesture() {
-      if (setupAudio()) {
-        resumeAudioContextIfNeeded();
-        video.muted = false;
-      } else {
-        video.muted = false;
-        try { video.volume = Math.min(1, (parseFloat(volumeSlider.value) || 5) / 10); } catch(e){}
-      }
-    }
-
-    function updatePlayButton() {
-      if (video.paused || video.ended) { playBtn.textContent = '▶'; }
-      else { playBtn.textContent = '⏸'; }
-    }
-
-    playBtn.addEventListener('click', async ()=>{
-      unlockAudioOnFirstGesture();
-      if (video.paused || video.ended) {
-        try { await video.play(); } catch (err) {}
-      } else {
-        video.pause();
-      }
-      updatePlayButton();
-    });
-
-    video.addEventListener('click', async ()=>{
-      unlockAudioOnFirstGesture();
-      if (video.paused) {
-        try { await video.play(); } catch(e){}
-      } else {
-        video.pause();
-      }
-      updatePlayButton();
-    });
-
-    video.addEventListener('timeupdate', ()=>{
-      if(!isFinite(video.duration) || !video.duration) return;
-      const percent = (video.currentTime / video.duration) * 100;
-      progressBar.style.width = percent + '%';
-    });
-
-    progressContainer.addEventListener('click', (e)=>{
-      const rect = progressContainer.getBoundingClientRect();
-      const clickX = e.clientX - rect.left;
-      const ratio = clickX / rect.width;
-      if(isFinite(video.duration) && video.duration) video.currentTime = ratio * video.duration;
-    });
-
-    function mapSliderToGain(v) {
-      const norm = Math.max(0, Math.min(1, v / 10));
-      return Math.pow(norm, 2) * MAX_GAIN;
-    }
-
-    volumeSlider.addEventListener('input', (e)=>{
-      const v = parseFloat(e.target.value);
-      if (v > 0) lastNonZeroVolume = v;
-      if (!setupAudio()) {
-        const vol = Math.max(0, Math.min(1, v / 10));
-        try { video.volume = vol; } catch(e){}
-      } else {
-        gainNode.gain.value = mapSliderToGain(v);
-      }
-      volumeBtn.textContent = (v === 0) ? '🔇' : '🔊';
-    });
-
-    volumeBtn.addEventListener('click', ()=>{
-      if (setupAudio()) {
-        if (gainNode && gainNode.gain.value > 0) {
-          lastNonZeroVolume = parseFloat(volumeSlider.value) || lastNonZeroVolume;
-          gainNode.gain.value = 0;
-          volumeSlider.value = 0;
-          volumeBtn.textContent = '🔇';
-        } else {
-          const restore = lastNonZeroVolume || 5;
-          gainNode.gain.value = mapSliderToGain(restore);
-          volumeSlider.value = restore;
-          volumeBtn.textContent = '🔊';
-        }
-      } else {
-        if (!video.muted && video.volume > 0) {
-          video.muted = true;
-          try { video.volume = 0; } catch(e){}
-          volumeBtn.textContent = '🔇';
-          volumeSlider.value = 0;
-        } else {
-          video.muted = false;
-          const restored = (lastNonZeroVolume || 5) / 10;
-          try { video.volume = Math.max(0, Math.min(1, restored)); } catch(e){}
-          volumeBtn.textContent = '🔊';
-          volumeSlider.value = lastNonZeroVolume || 5;
-        }
-      }
-    });
-
-    fullscreenBtn.addEventListener('click', async ()=>{
-      try {
-        if(!document.fullscreenElement){
-          if(player.requestFullscreen) await player.requestFullscreen();
-          else if(player.webkitRequestFullscreen) player.webkitRequestFullscreen();
-        } else {
-          if(document.exitFullscreen) await document.exitFullscreen();
-          else if(document.webkitExitFullscreen) document.webkitExitFullscreen();
-        }
-      } catch (err) {}
-    });
-
-    player.addEventListener('keydown', (e)=>{
-      if(e.code === 'Space' || e.key === ' '){
-        e.preventDefault();
-        if(video.paused) video.play(); else video.pause();
-        updatePlayButton();
-      }
-    });
-
-    function onFirstInteraction() {
-      unlockAudioOnFirstGesture();
-      window.removeEventListener('pointerdown', onFirstInteraction);
-      window.removeEventListener('keydown', onFirstInteraction);
-      window.removeEventListener('touchstart', onFirstInteraction);
-    }
-    window.addEventListener('pointerdown', onFirstInteraction, { once: true });
-    window.addEventListener('keydown', onFirstInteraction, { once: true });
-    window.addEventListener('touchstart', onFirstInteraction, { once: true });
-
-    updatePlayButton();
-    if (!setupAudio()) {
-      try { video.volume = Math.max(0, Math.min(1, parseFloat(volumeSlider.value) / 10)); } catch(e){}
-    } else {
-      gainNode.gain.value = mapSliderToGain(parseFloat(volumeSlider.value) || 5);
-    }
-  });
-})();
 </script>
 
 </body>
