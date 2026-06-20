@@ -1,77 +1,100 @@
 /* ============================================================
-   CATPLANET — Design tokens
-   Тема: ночной космос + кошачий взгляд в темноте.
-   Сменить палитру можно полностью в этом файле.
+   CATPLANET — Design tokens v2
+   Направление: глубокий космос + витаминный оранж + стекло.
+   Сигнатура бренда (щелевой зрачок на «A») не меняется —
+   меняется материал: было "тёплый янтарь на бархате",
+   стало "неоновый оранж сквозь матовое стекло в вакууме".
    ============================================================ */
 
 :root,
 :root[data-theme="dark"] {
   /* --- Поверхности --- */
-  --bg-void: #0a0912;
-  --bg-void-rgb: 10, 9, 18;
-  --bg-panel: #131121;
-  --bg-panel-raised: #1b1830;
-  --bg-panel-rgb: 27, 24, 48;
-  --line: #2b2645;
-  --line-soft: rgba(43, 38, 69, 0.6);
+  --bg-void: #08080a;
+  --bg-void-rgb: 8, 8, 10;
+  --bg-panel: #131316;
+  --bg-panel-rgb: 19, 19, 22;
+  --bg-panel-raised: #1c1c20;
+  --line: rgba(255, 255, 255, 0.08);
+  --line-soft: rgba(255, 255, 255, 0.05);
+
+  /* --- Стекло (новые поверхности для карточек/баннеров) --- */
+  --glass-bg: rgba(20, 20, 25, 0.6);
+  --glass-bg-strong: rgba(14, 14, 17, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --glass-blur: 14px;
 
   /* --- Текст --- */
-  --text-primary: #f1eefa;
-  --text-secondary: #b3add1;
-  --text-tertiary: #716b95;
+  --text-primary: #f6f5f3;
+  --text-secondary: #9c9ba3;
+  --text-tertiary: #5c5b63;
 
-  /* --- Акценты --- */
-  --accent-eye: #ffb54a;       /* янтарный — кошачий глаз в темноте */
-  --accent-eye-rgb: 255, 181, 74;
-  --accent-eye-dim: rgba(255, 181, 74, 0.14);
-  --accent-nebula: #7c6cf5;    /* индиго — туманность */
-  --accent-nebula-rgb: 124, 108, 245;
-  --accent-nebula-dim: rgba(124, 108, 245, 0.16);
-  --accent-danger: #ff6b6b;
-  --accent-danger-dim: rgba(255, 107, 107, 0.14);
-  --accent-plus: #ff8fd8;      /* метка CATPLANET Plus */
+  /* --- Акценты: единая оранжевая система --- */
+  --accent-eye: #ff7a00;        /* основной — кнопки, активные состояния, свечение */
+  --accent-eye-rgb: 255, 122, 0;
+  --accent-eye-dim: rgba(255, 122, 0, 0.12);
+  --accent-eye-light: #ff9f1c;  /* светлее — hover, вторичное свечение */
+  --accent-eye-light-rgb: 255, 159, 28;
 
-  --shadow-soft: 0 20px 60px -25px rgba(0, 0, 0, 0.7);
-  --shadow-eye: 0 0 24px rgba(var(--accent-eye-rgb), 0.35);
+  --accent-nebula: #ff9f1c;     /* тёплый вторичный тон вместо индиго */
+  --accent-nebula-rgb: 255, 159, 28;
+  --accent-nebula-dim: rgba(255, 159, 28, 0.14);
+
+  --accent-danger: #ff5c5c;
+  --accent-danger-dim: rgba(255, 92, 92, 0.14);
+  --accent-plus: #8b7cff;       /* единственный холодный акцент — только для метки Plus */
+
+  --shadow-soft: 0 30px 80px -35px rgba(0, 0, 0, 0.85);
+  --shadow-eye: 0 0 28px rgba(var(--accent-eye-rgb), 0.4);
+  --shadow-eye-lg: 0 24px 60px -20px rgba(var(--accent-eye-rgb), 0.45);
 }
 
 :root[data-theme="light"] {
-  --bg-void: #f3f1fa;
-  --bg-void-rgb: 243, 241, 250;
+  --bg-void: #f7f5f2;
+  --bg-void-rgb: 247, 245, 242;
   --bg-panel: #ffffff;
-  --bg-panel-raised: #ffffff;
   --bg-panel-rgb: 255, 255, 255;
-  --line: #e1dcf0;
-  --line-soft: rgba(225, 220, 240, 0.8);
+  --bg-panel-raised: #ffffff;
+  --line: rgba(20, 15, 10, 0.09);
+  --line-soft: rgba(20, 15, 10, 0.05);
 
-  --text-primary: #1b1730;
-  --text-secondary: #514b72;
-  --text-tertiary: #837cab;
+  --glass-bg: rgba(255, 255, 255, 0.6);
+  --glass-bg-strong: rgba(255, 255, 255, 0.82);
+  --glass-border: rgba(20, 15, 10, 0.07);
+  --glass-blur: 14px;
 
-  --accent-eye: #b8650f;
-  --accent-eye-rgb: 184, 101, 15;
-  --accent-eye-dim: rgba(184, 101, 15, 0.1);
-  --accent-nebula: #5b4bd6;
-  --accent-nebula-rgb: 91, 75, 214;
-  --accent-nebula-dim: rgba(91, 75, 214, 0.1);
+  --text-primary: #19140d;
+  --text-secondary: #5c5247;
+  --text-tertiary: #8c8275;
+
+  --accent-eye: #c2570a;
+  --accent-eye-rgb: 194, 87, 10;
+  --accent-eye-dim: rgba(194, 87, 10, 0.1);
+  --accent-eye-light: #a8480a;
+  --accent-eye-light-rgb: 168, 72, 10;
+
+  --accent-nebula: #d97c1f;
+  --accent-nebula-rgb: 217, 124, 31;
+  --accent-nebula-dim: rgba(217, 124, 31, 0.1);
+
   --accent-danger: #d6433f;
   --accent-danger-dim: rgba(214, 67, 63, 0.1);
-  --accent-plus: #c43fa0;
+  --accent-plus: #6452d6;
 
-  --shadow-soft: 0 20px 50px -28px rgba(27, 23, 48, 0.25);
-  --shadow-eye: 0 0 18px rgba(var(--accent-eye-rgb), 0.25);
+  --shadow-soft: 0 25px 60px -30px rgba(25, 20, 13, 0.2);
+  --shadow-eye: 0 0 20px rgba(var(--accent-eye-rgb), 0.22);
+  --shadow-eye-lg: 0 20px 50px -22px rgba(var(--accent-eye-rgb), 0.3);
 }
 
 :root {
   /* --- Типографика ---
-     Display: Golos Text — геометричный, но с характером, хорошо ведёт себя в кириллице.
-     Текст: Inter — нейтральный, читаемый в длинных вики-статьях.
-     Технический: JetBrains Mono — для команд, цифр, цен. */
-  --font-display: "Golos Text", "Inter", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+     Golos Text закрывает и заголовки, и текст — никакого
+     системного sans-serif в основном стеке. JetBrains Mono —
+     только для цифр, тегов и технических значений. */
+  --font-display: "Golos Text", system-ui, sans-serif;
+  --font-body: "Golos Text", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 
-  --fs-hero: clamp(2.75rem, 6vw + 1rem, 6rem);
+  --fs-hero: clamp(2.75rem, 6vw + 1rem, 6.4rem);
   --fs-h1: clamp(2.1rem, 3vw + 1rem, 3rem);
   --fs-h2: clamp(1.5rem, 1.6vw + 1rem, 2rem);
   --fs-h3: 1.15rem;
@@ -79,17 +102,24 @@
   --fs-small: 0.875rem;
   --fs-micro: 0.75rem;
 
+  --ls-badge: 0.16em; /* щедрый трекинг для аптайт-бейджей и эйброу-меток */
+
   /* --- Сетка/отступы --- */
   --container: 1180px;
-  --radius-s: 10px;
-  --radius-m: 16px;
-  --radius-l: 24px;
+  --radius-s: 12px;
+  --radius-m: 18px;
+  --radius-l: 28px;
+  --radius-xl: 32px;
+  --radius-hero: 42px;
   --gap: 1.25rem;
+  --pad-card: clamp(1.75rem, 2.4vw, 3rem); /* 28px → 48px */
 
   /* --- Анимация --- */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-premium: cubic-bezier(0.25, 1, 0.5, 1);
   --dur-fast: 160ms;
   --dur-base: 320ms;
+  --dur-premium: 420ms;
 }
 
 @media (prefers-reduced-motion: reduce) {
