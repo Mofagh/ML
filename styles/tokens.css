@@ -1,0 +1,102 @@
+/* ============================================================
+   CATPLANET — Design tokens
+   Тема: ночной космос + кошачий взгляд в темноте.
+   Сменить палитру можно полностью в этом файле.
+   ============================================================ */
+
+:root,
+:root[data-theme="dark"] {
+  /* --- Поверхности --- */
+  --bg-void: #0a0912;
+  --bg-void-rgb: 10, 9, 18;
+  --bg-panel: #131121;
+  --bg-panel-raised: #1b1830;
+  --bg-panel-rgb: 27, 24, 48;
+  --line: #2b2645;
+  --line-soft: rgba(43, 38, 69, 0.6);
+
+  /* --- Текст --- */
+  --text-primary: #f1eefa;
+  --text-secondary: #b3add1;
+  --text-tertiary: #716b95;
+
+  /* --- Акценты --- */
+  --accent-eye: #ffb54a;       /* янтарный — кошачий глаз в темноте */
+  --accent-eye-rgb: 255, 181, 74;
+  --accent-eye-dim: rgba(255, 181, 74, 0.14);
+  --accent-nebula: #7c6cf5;    /* индиго — туманность */
+  --accent-nebula-rgb: 124, 108, 245;
+  --accent-nebula-dim: rgba(124, 108, 245, 0.16);
+  --accent-danger: #ff6b6b;
+  --accent-danger-dim: rgba(255, 107, 107, 0.14);
+  --accent-plus: #ff8fd8;      /* метка CATPLANET Plus */
+
+  --shadow-soft: 0 20px 60px -25px rgba(0, 0, 0, 0.7);
+  --shadow-eye: 0 0 24px rgba(var(--accent-eye-rgb), 0.35);
+}
+
+:root[data-theme="light"] {
+  --bg-void: #f3f1fa;
+  --bg-void-rgb: 243, 241, 250;
+  --bg-panel: #ffffff;
+  --bg-panel-raised: #ffffff;
+  --bg-panel-rgb: 255, 255, 255;
+  --line: #e1dcf0;
+  --line-soft: rgba(225, 220, 240, 0.8);
+
+  --text-primary: #1b1730;
+  --text-secondary: #514b72;
+  --text-tertiary: #837cab;
+
+  --accent-eye: #b8650f;
+  --accent-eye-rgb: 184, 101, 15;
+  --accent-eye-dim: rgba(184, 101, 15, 0.1);
+  --accent-nebula: #5b4bd6;
+  --accent-nebula-rgb: 91, 75, 214;
+  --accent-nebula-dim: rgba(91, 75, 214, 0.1);
+  --accent-danger: #d6433f;
+  --accent-danger-dim: rgba(214, 67, 63, 0.1);
+  --accent-plus: #c43fa0;
+
+  --shadow-soft: 0 20px 50px -28px rgba(27, 23, 48, 0.25);
+  --shadow-eye: 0 0 18px rgba(var(--accent-eye-rgb), 0.25);
+}
+
+:root {
+  /* --- Типографика ---
+     Display: Golos Text — геометричный, но с характером, хорошо ведёт себя в кириллице.
+     Текст: Inter — нейтральный, читаемый в длинных вики-статьях.
+     Технический: JetBrains Mono — для команд, цифр, цен. */
+  --font-display: "Golos Text", "Inter", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
+
+  --fs-hero: clamp(2.75rem, 6vw + 1rem, 6rem);
+  --fs-h1: clamp(2.1rem, 3vw + 1rem, 3rem);
+  --fs-h2: clamp(1.5rem, 1.6vw + 1rem, 2rem);
+  --fs-h3: 1.15rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-micro: 0.75rem;
+
+  /* --- Сетка/отступы --- */
+  --container: 1180px;
+  --radius-s: 10px;
+  --radius-m: 16px;
+  --radius-l: 24px;
+  --gap: 1.25rem;
+
+  /* --- Анимация --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: 160ms;
+  --dur-base: 320ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
